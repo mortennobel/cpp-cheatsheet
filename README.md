@@ -293,3 +293,129 @@ N::T t;                     // Use name T in namespace N
 using namespace N;          // Make T visible without N:: 
 ~~~~ 
    
+## MATH.H, CMATH (Floating point math)
+~~~~
+#include <cmath>            // Include cmath (std namespace)
+sin(x); cos(x); tan(x);     // Trig functions, x (double) is in radians 
+asin(x); acos(x); atan(x);  // Inverses
+atan2(y, x);                // atan(y/x) 
+sinh(x); cosh(x); tanh(x);  // Hyperbolic 
+exp(x); log(x); log10(x);   // e to the x, log base e, log base 10 
+pow(x, y); sqrt(x);         // x to the y, square root 
+ceil(x); floor(x);          // Round up or down (as a double) 
+fabs(x); fmod(x, y);        // Absolute value, x mod y  
+~~~~ 
+   
+## ASSERT.H, CASSERT (Debugging aid) 
+~~~~
+#include <cassert>        // Include iostream (std namespace)
+assert(e);                // If e is false, print message and abort 
+#define NDEBUG            // (before #include <assert.h>), turn off assert 
+~~~~ 
+   
+## IOSTREAM.H, IOSTREAM (Replaces stdio.h) 
+~~~~
+#include <iostream>         // Include iostream (std namespace)
+cin >> x >> y;              // Read words x and y (any type) from stdin 
+cout << "x=" << 3 << endl;  // Write line to stdout 
+cerr << x << y << flush;    // Write to stderr and flush 
+c = cin.get();              // c = getchar(); 
+cin.get(c);                 // Read char 
+cin.getline(s, n, '\n');    // Read line into char s[n] to '\n' (default) 
+if (cin)                    // Good state (not EOF)? 
+                            // To read/write any type T: 
+istream& operator>>(istream& i, T& x) {i >> ...; x=...; return i;} 
+ostream& operator<<(ostream& o, const T& x) {return o << ...;} 
+~~~~ 
+
+## FSTREAM.H, FSTREAM (File I/O works like cin, cout as above)
+    
+~~~~
+#include <fstream>          // Include filestream (std namespace)
+ifstream f1("filename");    // Open text file for reading 
+if (f1)                     // Test if open and input available 
+  f1 >> x;                  // Read object from file 
+f1.get(s);                  // Read char or line 
+f1.getline(s, n);           // Read line into string s[n] 
+ofstream f2("filename");    // Open file for writing 
+if (f2) f2 << x;            // Write to file   
+~~~~ 
+
+## STRING (Variable sized character array) 
+~~~~
+#include <string>         // Include string (std namespace)
+string s1, s2="hello";    // Create strings 
+s1.size(), s2.size();     // Number of characters: 0, 5 
+s1 += s2 + ' ' + "world"; // Concatenation 
+s1 == "hello world"       // Comparison, also <, >, !=, etc. 
+s1[0];                    // 'h' 
+s1.substr(m, n);          // Substring of size n starting at s1[m] 
+s1.c_str();               // Convert to const char* 
+getline(cin, s);          // Read line ending in '\n' 
+~~~~ 
+
+## VECTOR (Variable sized array/stack with built in memory allocation) 
+
+~~~~
+#include <vector>         // Include vector (std namespace)
+vector<int> a(10);        // a[0]..a[9] are int (default size is 0) 
+vector<int> b{1,2,3};        // Create vector with values 1,2,3
+a.size();                 // Number of elements (10) 
+a.push_back(3);           // Increase size to 11, a[10]=3
+a.back()=4;               // a[10]=4; 
+a.pop_back();             // Decrease size by 1 
+a.front();                // a[0]; 
+a[20]=1;                  // Crash: not bounds checked 
+a.at(20)=1;               // Like a[20] but throws out_of_range() 
+for (int& p : a) 
+  p=0;                    // C++11: Set all elements of a to 0
+for (vector<int>::iterator p=a.begin(); p!=a.end(); ++p) 
+  *p=0;                   // C++03: Set all elements of a to 0   
+vector<int> b(a.begin(), a.end());  // b is copy of a
+vector<T> c(n, x);        // c[0]..c[n-1] init to x 
+T d[10]; vector<T> e(d, d+10);      // e is initialized from d       
+~~~~ 
+   
+## DEQUE (array/stack/queue)
+
+deque<T> is like vector&lt;T&gt;, but also supports:  
+~~~~
+#include <deque>          // Include deque (std namespace)
+a.push_front(x);          // Puts x at a[0], shifts elements toward back 
+a.pop_front();            // Removes a[0], shifts toward front 
+~~~~ 
+   
+## UTILITY (Pair) 
+~~~~
+#include <utility>        // Include utility (std namespace)
+pair<string, int> a("hello", 3);  // A 2-element struct 
+a.first;                  // "hello" 
+a.second;                 // 3 
+~~~~ 
+   
+## MAP (associative array - usually implemented as red-black trees) 
+~~~~
+#include <map>            // Include map (std namespace)  
+map<string, int> a;       // Map from string to int 
+a["hello"]=3;             // Add or replace element a["hello"] 
+for (auto& p:a) 
+  cout << p.first << p.second;  // Prints hello, 3
+a.size();                 // 1    
+~~~~ 
+
+## ALGORITHM (A collection of 60 algorithms on sequences with iterators) 
+~~~~
+#include <algorithm>      // Include algorithm (std namespace) 
+min(x, y); max(x, y);     // Smaller/larger of x, y (any type defining <) 
+swap(x, y);               // Exchange values of variables x and y 
+sort(a, a+n);             // Sort array a[0]..a[n-1] by < 
+sort(a.begin(), a.end()); // Sort vector or deque 
+~~~~ 
+
+
+ 
+
+   
+
+   
+    
