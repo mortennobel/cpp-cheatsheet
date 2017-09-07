@@ -2,7 +2,7 @@
 
 # C++ QUICK REFERENCE / C++ CHEATSHEET  
 Based on <a href="http://www.pa.msu.edu/~duxbury/courses/phy480/Cpp_refcard.pdf">Phillip M. Duxbury's C++ Cheatsheet</a> and edited by Morten Nobel-Jørgensen. 
-The cheatsheet focus on C++ - not on the library.
+The cheatsheet focus is on C++ - not on the library.
 C++11 additions is inspired by <a href="https://isocpp.org/blog/2012/12/c11-a-cheat-sheet-alex-sinyakov">ISOCPP.org C++11 Cheatsheet</a>).
 
 The goal is to give a concise overview of basic, modern C++.
@@ -15,7 +15,7 @@ The document is hosted on https://github.com/mortennobel/cpp-cheatsheet. Any com
                             // Comment to end of line  
                             /* Multi-line comment */ 
 #include  <stdio.h>         // Insert standard header file  
-include "myfile.h"          // Insert file in current directory 
+#include "myfile.h"         // Insert file in current directory 
 #define X some text         // Replace X with some text 
 #define F(a,b) a+b          // Replace F(1,2) with 1+2 
 #define X \
@@ -352,6 +352,7 @@ s1 == "hello world"       // Comparison, also <, >, !=, etc.
 s1[0];                    // 'h' 
 s1.substr(m, n);          // Substring of size n starting at s1[m] 
 s1.c_str();               // Convert to const char* 
+s1 = to_string(12.05);    // Converts number to string
 getline(cin, s);          // Read line ending in '\n' 
 ~~~~ 
 
