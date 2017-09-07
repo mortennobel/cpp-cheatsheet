@@ -198,8 +198,8 @@ delete[] p                  // Destroy and free array of objects at p
 
 x * y                       // Multiply 
 x / y                       // Divide (integers round toward 0) 
-x \% y                      // Modulo (result has sign of x) 
-\\
+x % y                       // Modulo (result has sign of x) 
+
 x + y                       // Add, or \&x[y] 
 x - y                       // Subtract, or number of elements from *x to *y 
 x << y                      // x shifted y bits to left (x * pow(2, y)) 
