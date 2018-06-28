@@ -233,8 +233,8 @@ x , y                       // evaluates x and y, returns y (seldom used)
 ```cpp
 class T {                   // A new type
 private:                    // Section accessible only to T's member functions
-protected:                  // Also accessuble to classes derived from T
-public:                     // Accessuble to all
+protected:                  // Also accessible to classes derived from T
+public:                     // Accessible to all
     int x;                  // Member data
     void f();               // Member function
     void g() {return;}      // Inline member function
@@ -355,7 +355,7 @@ ofstream f2("filename");    // Open file for writing
 if (f2) f2 << x;            // Write to file
 ```
 
-## `string` (Variable sized character `array`)
+## `string` (Variable sized character array)
 
 ```cpp
 #include <string>         // Include string (std namespace)
@@ -393,7 +393,7 @@ vector<T> c(n, x);        // c[0]..c[n-1] init to x
 T d[10]; vector<T> e(d, d+10);      // e is initialized from d
 ```
 
-## `deque` (Array Stack Queue)
+## `deque` (Array stack queue)
 
 `deque<T>` is like `vector<T>`, but also supports:
 
@@ -403,7 +403,7 @@ a.push_front(x);          // Puts x at a[0], shifts elements toward back
 a.pop_front();            // Removes a[0], shifts toward front
 ```
 
-## `utility` (Pair)
+## `utility` (pair)
 
 ```cpp
 #include <utility>        // Include utility (std namespace)
@@ -412,7 +412,7 @@ a.first;                  // "hello"
 a.second;                 // 3
 ```
 
-## `map` (associative array - usually implemented as red-black Trees)
+## `map` (associative array - usually implemented as red-black trees)
 
 ```cpp
 #include <map>            // Include map (std namespace)
@@ -423,7 +423,7 @@ for (auto& p:a)
 a.size();                 // 1
 ```
 
-## `algorithm` (A collection of 60 algorithms on sequences with Iterators)
+## `algorithm` (A collection of 60 algorithms on sequences with iterators)
 
 ```cpp
 #include <algorithm>      // Include algorithm (std namespace)
