@@ -372,7 +372,6 @@ getline(cin, s);          // Read line ending in '\n'
 
 ## `vector` (Variable sized array/stack with built in memory allocation)
 
-
 ```cpp
 #include <vector>         // Include vector (std namespace)
 vector<int> a(10);        // a[0]..a[9] are int (default size is 0)
@@ -412,7 +411,7 @@ a.first;                  // "hello"
 a.second;                 // 3
 ```
 
-## `map` (associative array - usually implemented as red-black trees)
+## `map` (associative array - usually implemented as binary search trees)
 
 ```cpp
 #include <map>            // Include map (std namespace)
@@ -423,6 +422,39 @@ for (auto& p:a)
 a.size();                 // 1
 ```
 
+## `unordered_map` (associative array - usually implemented as hash table)
+
+```cpp
+#include <unordered_map>  // Include map (std namespace)
+unordered_map<string, int> a; // Map from string to int
+a["hello"] = 3;           // Add or replace element a["hello"]
+for (auto& p:a)
+    cout << p.first << p.second;  // Prints hello, 3
+a.size();                 // 1
+```
+
+## `set` (store unique elements - usually implemented as binary search trees)
+
+```cpp
+#include <set>            // Include set (std namespace)
+set<int> s;               // Set of integers
+s.insert(123);            // Add element to set
+if (s.find(123) != s.end()) // Search for an element
+    s.erase(123);
+cout << s.size();         // Number of elements in set
+```
+
+## `unordered_set` (store unique elements - usually implemented as a hash set)
+
+```cpp
+#include <unordered_set>  // Include set (std namespace)
+unordered_set<int> s;     // Set of integers
+s.insert(123);            // Add element to set
+if (s.find(123) != s.end()) // Search for an element
+    s.erase(123);
+cout << s.size();         // Number of elements in set
+```
+
 ## `algorithm` (A collection of 60 algorithms on sequences with iterators)
 
 ```cpp
@@ -431,4 +463,5 @@ min(x, y); max(x, y);     // Smaller/larger of x, y (any type defining <)
 swap(x, y);               // Exchange values of variables x and y
 sort(a, a+n);             // Sort array a[0]..a[n-1] by <
 sort(a.begin(), a.end()); // Sort vector or deque
+reverse(a.begin(), a.end()); // Reverse vector or deque
 ```
