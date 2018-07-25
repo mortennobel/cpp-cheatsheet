@@ -2,10 +2,10 @@
 
 # C++ QUICK REFERENCE / C++ CHEATSHEET
 Based on <a href="http://www.pa.msu.edu/~duxbury/courses/phy480/Cpp_refcard.pdf">Phillip M. Duxbury's C++ Cheatsheet</a> and edited by Morten Nobel-Jørgensen.
-The cheatsheet focus is on C++ - not on the library.
+The cheatsheet focus is on C++ - not on the standard library.
 C++11 additions is inspired by <a href="https://isocpp.org/blog/2012/12/c11-a-cheat-sheet-alex-sinyakov">ISOCPP.org C++11 Cheatsheet</a>).
 
-The goal is to give a concise overview of basic, modern C++.
+The goal is to give a concise overview of basic, modern C++ (C++14).
 
 The document is hosted on https://github.com/mortennobel/cpp-cheatsheet. Any comments and feedback are appreciated.
 
