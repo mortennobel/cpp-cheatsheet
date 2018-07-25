@@ -303,6 +303,42 @@ N::T t;                     // Use name T in namespace N
 using namespace N;          // Make T visible without N::
 ```
 
+## `memory` (dynamic memory management)
+
+```cpp
+#include <memory>           // Include memory (std namespace)
+shared_ptr<int> x;          // Empty shared_ptr to a integer on heap. Uses reference counting for cleaning up objects.
+x = make_shared<int>(12);   // Allocate value 12 on heap
+shared_ptr<int> y = x;      // Copy shared_ptr, implicit changes reference count to 2.
+cout << *y;                 // Deference y to print '12'
+if (y.get() == x.get()) {   // Raw pointers (here x == y)
+    cout << "Same";  
+}  
+y.reset();                  // Eliminate one owner of object
+if (y.get() != x.get()) { 
+    cout << "Different";  
+}  
+if (y == nullptr) {         // Can compare against nullptr (here returns true)
+    cout << "Empty";  
+}  
+y = make_shared<int>(15);   // Assign new value
+cout << *y;                 // Deference x to print '15'
+cout << *x;                 // Deference x to print '12'
+weak_ptr<int> w;            // Create empty weak pointer
+w = y;                      // w has weak reference to y.
+if (shared_ptr<int> s = w.lock()) { // Has to be copied into a shared_ptr before usage
+    cout << *s;
+}
+unique_ptr<int> z;          // Create empty unique pointers
+unique_ptr<int> q;
+z = make_unique<int>(16);   // Allocate int (16) on heap. Only one reference allowed.
+q = move(z);                // Move reference from z to q.
+if (z == nullptr){
+    cout << "Z null";
+}
+cout << *q;
+```
+
 ## `math.h`, `cmath` (floating point math)
 
 ```cpp
