@@ -502,7 +502,7 @@ sort(a.begin(), a.end()); // Sort vector or deque
 reverse(a.begin(), a.end()); // Reverse vector or deque
 ```
 
-## 'chrono' (Time related library)
+## `chrono` (Time related library)
 ```cpp
 #include <chrono>         // Include chrono
 using namespace chrono;   // Use namespace
