@@ -2,7 +2,7 @@
 
 # C++ QUICK REFERENCE / C++ CHEATSHEET
 Based on <a href="http://www.pa.msu.edu/~duxbury/courses/phy480/Cpp_refcard.pdf">Phillip M. Duxbury's C++ Cheatsheet</a> and edited by Morten Nobel-Jørgensen.
-The cheatsheet focus is on C++ - not on the standard library.
+The cheatsheet focus is both on the language as well as common classes from the standard library.
 C++11 additions is inspired by <a href="https://isocpp.org/blog/2012/12/c11-a-cheat-sheet-alex-sinyakov">ISOCPP.org C++11 Cheatsheet</a>).
 
 The goal is to give a concise overview of basic, modern C++ (C++14).
@@ -505,7 +505,7 @@ reverse(a.begin(), a.end()); // Reverse vector or deque
 ## `chrono` (Time related library)
 ```cpp
 #include <chrono>         // Include chrono
-using namespace chrono;   // Use namespace
+using namespace std::chrono; // Use namespace
 auto from =               // Get current time_point
   high_resolution_clock::now();
 // ... do some work       
@@ -516,4 +516,41 @@ using ms =                // Define ms as floating point duration
                           // Compute duration in milliseconds
 cout << duration_cast<ms>(to - from)
   .count() << "ms";
+```
+
+## `thread` (Multi-threading library)
+```cpp
+#include <thread>         // Include thread
+unsigned c = 
+  hardware_concurrency(); // Hardware threads (or 0 for unknown)
+auto lambdaFn = [](){     // Lambda function used for thread body
+    cout << "Hello multithreading";
+};
+thread t(lambdaFn);       // Create and run thread with lambda
+t.join();                 // Wait for t finishes
+
+// --- shared resource example ---
+mutex mut;                         // Mutex for synchronization
+condition_variable cond;           // Shared condition variable
+const char* sharedMes              // Shared resource
+  = nullptr;
+auto pingPongFn =                  // thread body (lambda). Print someone else's message
+  [&](const char* mes){
+    while (true){
+      unique_lock<mutex> lock(mut);// locks the mutex 
+      do {                
+        cond.wait(lock, [&](){     // wait for condition to be true (unlocks while waiting which allows other threads to modify)        
+          return sharedMes != mes; // statement for when to continue
+        });
+      } while (sharedMes == mes);  // prevents spurious wakeup
+      cout << sharedMes << endl;
+      sharedMes = mes;       
+      lock.unlock();               // no need to have lock on notify 
+      cond.notify_all();           // notify all condition has changed
+    }
+  };
+sharedMes = "ping";
+thread t1(pingPongFn, sharedMes);  // start example with 3 concurrent threads
+thread t2(pingPongFn, "pong");
+thread t3(pingPongFn, "boing");
 ```
