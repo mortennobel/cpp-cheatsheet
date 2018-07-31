@@ -275,7 +275,7 @@ class W: public T, public U {};
                             // Multiple inheritance
 class X: public virtual T {};
                             // Classes derived from X have base T directly
-```cpp
+```
 
 All classes have a default copy constructor, assignment operator, and destructor, which perform the
 corresponding operations on each data member and each base class as shown above. There is also a default no-argument
