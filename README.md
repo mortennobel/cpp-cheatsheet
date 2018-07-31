@@ -511,8 +511,9 @@ auto from =               // Get current time_point
 // ... do some work       
 auto to =                 // Get current time_point
   high_resolution_clock::now();
-using ms =                // Compute duration in milliseconds
+using ms =                // Define ms as floating point duration
   duration<float, milliseconds::period>;
+                          // Compute duration in milliseconds
 cout << duration_cast<ms>(to - from)
   .count() << "ms";
 ```
