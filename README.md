@@ -447,7 +447,7 @@ a.first;                  // "hello"
 a.second;                 // 3
 ```
 
-## `map` (associative array - usually implemented as binary search trees)
+## `map` (associative array - usually implemented as binary search trees - avg. time complexity: O(log n))
 
 ```cpp
 #include <map>            // Include map (std namespace)
@@ -458,7 +458,7 @@ for (auto& p:a)
 a.size();                 // 1
 ```
 
-## `unordered_map` (associative array - usually implemented as hash table)
+## `unordered_map` (associative array - usually implemented as hash table - avg. time complexity: O(1))
 
 ```cpp
 #include <unordered_map>  // Include map (std namespace)
@@ -469,7 +469,7 @@ for (auto& p:a)
 a.size();                 // 1
 ```
 
-## `set` (store unique elements - usually implemented as binary search trees)
+## `set` (store unique elements - usually implemented as binary search trees - avg. time complexity: O(log n))
 
 ```cpp
 #include <set>            // Include set (std namespace)
@@ -480,7 +480,7 @@ if (s.find(123) != s.end()) // Search for an element
 cout << s.size();         // Number of elements in set
 ```
 
-## `unordered_set` (store unique elements - usually implemented as a hash set)
+## `unordered_set` (store unique elements - usually implemented as a hash set - avg. time complexity: O(1))
 
 ```cpp
 #include <unordered_set>  // Include set (std namespace)
@@ -500,4 +500,19 @@ swap(x, y);               // Exchange values of variables x and y
 sort(a, a+n);             // Sort array a[0]..a[n-1] by <
 sort(a.begin(), a.end()); // Sort vector or deque
 reverse(a.begin(), a.end()); // Reverse vector or deque
+```
+
+## 'chrono' (Time related library)
+```cpp
+#include <chrono>         // Include chrono
+using namespace chrono;   // Use namespace
+auto from =               // Get current time_point
+  high_resolution_clock::now();
+// ... do some work       
+auto to =                 // Get current time_point
+  high_resolution_clock::now();
+using ms =                // Compute duration in milliseconds
+  duration<float, milliseconds::period>;
+cout << duration_cast<ms>(to - from)
+  .count() << "ms";
 ```
