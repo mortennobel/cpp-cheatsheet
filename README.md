@@ -554,3 +554,20 @@ thread t1(pingPongFn, sharedMes);  // start example with 3 concurrent threads
 thread t2(pingPongFn, "pong");
 thread t3(pingPongFn, "boing");
 ```
+
+## `future` (thread support library)
+```cpp
+#include <future>         // Include future
+function<int(int)> fib =  // Create lambda function
+  [&](int i){
+    if (i <= 1){
+      return 1;
+    }
+    return fib(i-1) 
+         + fib(i-2);
+  };
+future<int> fut =         // result of async function
+  async(launch::async, fib, 4); // start async function in other thread
+// do some other work 
+cout << fut.get();        // get result of async function. Wait if needed.
+```
