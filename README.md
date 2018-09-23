@@ -180,7 +180,7 @@ x++                         // Add 1 to x, evaluates to original x (postfix)
 x--                         // Subtract 1 from x, evaluates to original x
 typeid(x)                   // Type of x
 typeid(T)                   // Equals typeid(x) if x is a T
-dynamic_cast< T>(x)         // Converts x to a T, checked at run time
+dynamic_cast< T>(x)         // Converts x to a T, checked at run time.
 static_cast< T>(x)          // Converts x to a T, not checked
 reinterpret_cast< T>(x)     // Interpret bits of x as a T
 const_cast< T>(x)           // Converts x to same type T but not const
@@ -337,6 +337,9 @@ if (z == nullptr){
     cout << "Z null";
 }
 cout << *q;
+shared_ptr<B> r;
+r = dynamic_pointer_cast<B>(t); // Converts t to a shared_ptr<B>
+
 ```
 
 ## `math.h`, `cmath` (floating point math)
