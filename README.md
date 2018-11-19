@@ -310,7 +310,7 @@ using namespace N;          // Make T visible without N::
 shared_ptr<int> x;          // Empty shared_ptr to a integer on heap. Uses reference counting for cleaning up objects.
 x = make_shared<int>(12);   // Allocate value 12 on heap
 shared_ptr<int> y = x;      // Copy shared_ptr, implicit changes reference count to 2.
-cout << *y;                 // Deference y to print '12'
+cout << *y;                 // Dereference y to print '12'
 if (y.get() == x.get()) {   // Raw pointers (here x == y)
     cout << "Same";  
 }  
@@ -322,8 +322,8 @@ if (y == nullptr) {         // Can compare against nullptr (here returns true)
     cout << "Empty";  
 }  
 y = make_shared<int>(15);   // Assign new value
-cout << *y;                 // Deference x to print '15'
-cout << *x;                 // Deference x to print '12'
+cout << *y;                 // Dereference x to print '15'
+cout << *x;                 // Dereference x to print '12'
 weak_ptr<int> w;            // Create empty weak pointer
 w = y;                      // w has weak reference to y.
 if (shared_ptr<int> s = w.lock()) { // Has to be copied into a shared_ptr before usage
