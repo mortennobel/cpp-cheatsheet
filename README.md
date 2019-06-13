@@ -151,10 +151,10 @@ declarations and a set of function definitions (possibly in separate files), one
 
 ```cpp
 int main()  { statements... }     // or
-int main(int argc, char* argv[]) { statements... }
+int main(int argc, char* argv[], char* envp[]) { statements... }
 ```
 
-`argv` is an array of `argc` strings from the command line.
+`argv` is an array of `argc` strings from the command line and `envp` is an array of variables of ambient.
 By convention, `main` returns status `0` if successful, `1` or higher for errors.
 
 Functions with different parameters may have the same name (overloading). Operators except `::` `.` `.*` `?:` may be overloaded.
