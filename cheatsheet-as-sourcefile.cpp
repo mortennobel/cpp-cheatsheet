@@ -116,8 +116,8 @@ for (x : y) a;              // Range-based for loop e.g.
 do a; while (x);            // Equivalent to: a; while(x) a;
 
 switch (x) {                // x must be int
-case X1: a;             // If x == X1 (must be a const), jump here
-case X2: b;             // Else if x == X2, jump here
+case X1: a; break;          // If x == X1 (must be a const), jump here
+case X2: b; break;          // Else if x == X2, jump here
 default: c;             // Else jump here (optional)
 }
 break;                      // Jump out of while, do, or for loop, or switch
