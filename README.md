@@ -322,7 +322,7 @@ if (y == nullptr) {         // Can compare against nullptr (here returns true)
     cout << "Empty";  
 }  
 y = make_shared<int>(15);   // Assign new value
-cout << *y;                 // Dereference x to print '15'
+cout << *y;                 // Dereference y to print '15'
 cout << *x;                 // Dereference x to print '12'
 weak_ptr<int> w;            // Create empty weak pointer
 w = y;                      // w has weak reference to y.
