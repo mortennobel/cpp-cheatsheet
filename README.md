@@ -146,7 +146,7 @@ extern "C" {void f();}      // f() was compiled in C
 ```
 
 Function parameters and return values may be of any type. A function must either be declared or defined before
-it is used. It may be declared first and defined later. Every program consists of a set of a set of global variable
+it is used. It may be declared first and defined later. Every program consists of a set of global variable
 declarations and a set of function definitions (possibly in separate files), one of which must be:
 
 ```cpp
