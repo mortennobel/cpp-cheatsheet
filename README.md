@@ -360,8 +360,10 @@ fabs(x); fmod(x, y);        // Absolute value, x mod y
 
 ```cpp
 #include <cassert>        // Include iostream (std namespace)
-assert(e);                // If e is false, print message and abort
+assert(e);                // checks if e is false at runtime, print message and abort
+static_assert(e)          // checks if e is false at compile time, gives a compilation error if false
 #define NDEBUG            // (before #include <assert.h>), turn off assert
+
 ```
 
 ## `iostream.h`, `iostream` (Replaces `stdio.h`)
