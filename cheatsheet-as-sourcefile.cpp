@@ -366,7 +366,7 @@ if (f1)                     // Test if open and input available
 f1 >> x;                    // Read object from file
 f1.get(s);                  // Read char or line
 f1.getline(s, n);           // Read line into string s[n]
-ofstream f2("filename");    // Open file for writing
+ifstream f2("filename");    // Open file for writing
 if (f2) f2 << x;            // Write to file
 
 // ## `string` (Variable sized character array)
