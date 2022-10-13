@@ -382,6 +382,15 @@ s1.c_str();               // Convert to const char*
 s1 = to_string(12.05);    // Converts number to string
 getline(cin, s);          // Read line ending in '\n'
 
+Methods
+append(): Inserts character to the end of the string
+assign(): equivalent to "=" operator
+at(): returns char at specific position
+find(): search the string and return the first occurence
+insert(): insert char at specified position
+replace(): replaces the particular portion of the string
+length(): return the size of the string
+
 // ## `vector` (Variable sized array/stack with built in memory allocation)
 
 #include <vector>         // Include vector (std namespace)
@@ -402,6 +411,15 @@ vector<int> b(a.begin(), a.end());  // b is copy of a
 vector<T> c(n, x);        // c[0]..c[n-1] init to x
 T d[10]; vector<T> e(d, d+10);      // e is initialized from d
 
+Methods:
+at(): returns value at specified position
+back(): returns the reference last element
+empty(): returns boolean value
+front(): returns the reference to the first element
+pop_back(): Removes the last element from the vector. Its time complexity is O(1). 
+push_back(): Inserts a new element at the end of the vector. Its time complexity is O(1).
+size(): returns the size of the vector
+
 // ## `deque` (Array stack queue)
 
 // `deque<T>` is like `vector<T>`, but also supports:
@@ -414,6 +432,10 @@ a.pop_front();            // Removes a[0], shifts toward front
 
 #include <utility>        // Include utility (std namespace)
         pair<string, int> a("hello", 3);  // A 2-element struct
+        pair <int, char> p1;                    // default
+        pair <int, char> p2 (1, ‘a’);            // value inititialization
+        pair <int, char> p3 (p2);               // copy of p2
+        p1 = make_pair(2, ‘b’);
 a.first;                  // "hello"
 a.second;                 // 3
 
@@ -528,3 +550,93 @@ future<int> fut =         // result of async function
         async(launch::async, fib, 4); // start async function in other thread
 // do some other work 
 cout << fut.get();        // get result of async function. Wait if needed.
+
+
+
+// Some of the DS from the STL
+
+<--- List --->
+
+Initialization:
+
+list<int> l
+list<int> l(5, 100)
+
+Methods: 
+begin(): returns interator to the first element
+back(): returns reference to the last element
+front(): returns reference to the first element
+push_back(): insert to the end of the list
+push_front(): insert to the front of the list
+pop_back(): fetch from the back of the list
+pop_front(): fetch from the front of the list
+insert(): insert at specified position O(n)
+size(): returns size of list
+
+
+<--- Set ---> Alternatives(unordered_set, multiset, unordered_multiset)
+set<int> s1;                               // Empty Set
+int a[]= {1, 2, 3, 4, 5, 5};
+set<int> s2 (a, a + 6);                    // s2 = {1, 2, 3, 4, 5}
+set<int> s3 (s2);                          // Copy of s2
+set<int> s4 (s3.begin(), s3.end());         // Set created using iterators
+
+Methods
+
+erase(): deletes particular element from the set
+find(): find an element from the set O(logN)
+insert(): insert element into the set 
+size(): get size of set
+count(): return 1 if element present otherwise 0
+
+
+Maps O(logN) ---- Alternatives (unordered_map O(1))
+map <char ,int > mp;
+
+mp[‘b’]  = 1;
+at(): returns a reference of the element
+count(): return if an elmenet specified by key present 1 if true otherwise 0 O(logN)
+find(): search for an element and return iterator O(logN)
+insert(): insert an element or a range of elements O(logN)
+
+
+<--- Stacks --->
+
+Declaration:
+stack <int> s;
+
+Some of the member functions of Stack are:
+push( ): Insert element at the top of stack. Its time complexity is O(1).
+pop( ): removes element from top of stack. Its time complexity is O(1).
+top( ): access the top element of stack. Its time complexity is O(1).
+empty( ): checks if the stack is empty or not. Its time complexity is O(1).
+size( ): returns the size of stack. Its time complexity is O(1).
+
+
+<--- Queues --->
+Queue is a container which follows FIFO order (First In First Out) . Here elements are inserted at one end (rear ) and extracted from another end(front) .
+
+Declaration:
+queue <int> q;
+
+
+Some member function of Queues are:
+push( ): inserts an element in queue at one end(rear ). Its time complexity is O(1).
+pop( ): deletes an element from another end if queue(front). Its time complexity is O(1).
+front( ): access the element on the front end of queue. Its time complexity is O(1).
+empty( ): checks if the queue is empty or not. Its time complexity is O(1).
+size( ): returns the size of queue. Its time complexity is O(1).
+
+
+<--- Priority Queue --->
+A priority queue is a container that provides constant time extraction of the largest element, at the expense of logarithmic insertion. It is similar to the heap in which we can add element at any time but only the maximum element can be retrieved. In a priority queue, an element with high priority is served before an element with low priority.
+
+Declaration:
+priority_queue<int> pq;
+
+Some member functions of priority queues are:
+empty(): Returns true if the priority queue is empty and false if the priority queue has at least one element. Its time complexity is O(1).
+pop(): Removes the largest element from the priority queue. Its time complexity is O(logN) where N is the size of the priority queue.
+push(): Inserts a new element in the priority queue. Its time complexity is O(logN) where N is the size of the priority queue.
+size(): Returns the number of element in the priority queue. Its time complexity is O(1).
+top(): Returns a reference to the largest element in the priority queue. Its time complexity is O(1).
