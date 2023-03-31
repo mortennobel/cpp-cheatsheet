@@ -303,6 +303,27 @@ N::T t;                     // Use name T in namespace N
 using namespace N;          // Make T visible without N::
 ```
 
+## TypeDef
+Used For Aliasing
+
+```cpp
+typedef std::vector<int> vInt;          //typedef <current_name> <new_name>
+```
+Now in code we can call vInt if we want to make a Vector of int type
+```cpp
+vInt v;
+  
+v.push_back(190);
+v.push_back(180);
+v.push_back(10);
+v.push_back(10);
+v.push_back(27);
+  
+for (auto X : v) {
+    cout << X << " ";
+}
+```
+
 ## `memory` (dynamic memory management)
 
 ```cpp
