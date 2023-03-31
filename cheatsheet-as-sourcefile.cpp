@@ -289,6 +289,22 @@ namespace N {class T {};}   // Hide name T
 N::T t;                     // Use name T in namespace N
 using namespace N;          // Make T visible without N::
 
+// ## TypeDef
+
+
+typedef std::vector<int> vInt;          //typedef <current_name> <new_name>
+vInt v;
+  
+v.push_back(190);
+v.push_back(180);
+v.push_back(10);
+v.push_back(10);
+v.push_back(27);
+  
+for (auto X : v) {
+    cout << X << " ";
+}
+
 // ## `memory` (dynamic memory management)
 
 #include <memory>           // Include memory (std namespace)
