@@ -574,3 +574,47 @@ future<int> fut =         // result of async function
 // do some other work 
 cout << fut.get();        // get result of async function. Wait if needed.
 ```
+## Pointers
+```cpp
+A pointer stores the address of another object, and unlike a reference, may be moved to point elsewhere. The expression &x means "address of x" and has type "pointer to x". If x has type T, then &x has type T*. If p has type T*, then *p is the object to which it points, which has type T. The * and & operators are inverses, e.g. *&x == x.
+
+Two pointers are equal if they point to the same object. All pointer types are distinct, and can only be assigned pointers of the same type or 0 (NULL). There are no run time checks against reading or writing the contents of a pointer to invalid memory. This usually causes a segmentation fault or general protection fault.
+
+  int i=3, *p=&i;    // p points to i, *p == 3
+  *p=5;              // i=5
+  p=new int(6);      // OK, p points to an int with value 6
+  p=new char('a');   // Error, even though char converts to int
+  p=6;               // Error, no conversion from int to pointer
+  p=0;               // OK
+  p=i-5;             // Error, compiler can't know this is 0
+  *p=7;              // Segmentation fault: writing to address 0
+  int *q; *q;        // Segmentation fault: q is not initialized, reading random memory
+A pointer to a const object of type T must also be const, of type const T*, meaning that the pointer may be assigned to but its contents may not.
+
+  const double PI=3.1415926535898;
+  double* p=&PI;              // Error, would allow *p=4 to change PI
+  const double* p=&PI;        // OK, can't assign to *p (but may assign to p)
+  double* const p=&PI;        // Error, may assign to *p (but not to p)
+  const double* const p=&PI;  // OK, both *p and p are const
+A function name used without parenthesis is a pointer to a function. Function pointers can be assigned values and called.
+
+  int f(double);     // functions f and g take double and return int
+  int g(double);
+  int *h(double);    // function h takes double and returns pointer to int
+  int (*p)(double);  // p is a pointer to a function that takes double and returns int
+  int main() {
+    p=f; p(3.0);     // calls f(3.0)
+    p=g; p(3.0);     // calls g(3.0)
+    p=h;             // Error, type mismatch
+Explicit pointer conversions are allowed but usually unsafe.
+
+  int i, *p=&i;
+  i=int(3.0);        // OK, rounds 3.0
+  *(double*)p = 3.0; // Crash, writes beyond end of i
+  *(double*)&PI = 4; // Overwrites a const
+These may also be written (with the same results):
+  i=static_cast<int>(3.0);            // Apply standard conversions
+  *reinterpret_cast<double*>p = 3.0;  // Pretend p has type double*
+  *const_cast<double*>&PI = 4;        // Same type except for const
+```
+
